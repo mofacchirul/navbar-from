@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Sininuser } from "../action/auth/SingIn";
 import Userinfo from "@/componets/userinfo";
+import { signIn } from "next-auth/react";
 
 
 export default function SignInPage() {
@@ -11,6 +12,13 @@ export default function SignInPage() {
   const handleSignIn = async (e) => {
     e.preventDefault();
    await Sininuser({email,password,redirect: false,})
+   const result = await signIn("credentials", {
+    email,
+    password,
+    redirect: false,
+  });
+console.log(result);
+
 
   };
 
